@@ -167,7 +167,7 @@ impl Simulator {
         let mut board: Hand;
         let update_interval = if self.sim_count < 10000 { 0xff } else { 0xfff };
 
-        let card_dist: Uniform<u8> = Uniform::from(0..CARD_COUNT);
+        let card_dist: Uniform<u8> = Uniform::from(15..CARD_COUNT);
 
         loop {
             player_hand_indexes = Vec::with_capacity(self.n_players);

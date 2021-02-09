@@ -23,8 +23,8 @@ const PAIR: u16 = 2 * HAND_CATEGORY_OFFSET;
 const TWO_PAIR: u16 = 3 * HAND_CATEGORY_OFFSET;
 const THREE_OF_A_KIND: u16 = 4 * HAND_CATEGORY_OFFSET;
 const STRAIGHT: u16 = 5 * HAND_CATEGORY_OFFSET;
-const FLUSH: u16 = 6 * HAND_CATEGORY_OFFSET;
-const FULL_HOUSE: u16 = 7 * HAND_CATEGORY_OFFSET;
+const FULL_HOUSE: u16 = 6 * HAND_CATEGORY_OFFSET;
+const FLUSH: u16 = 7 * HAND_CATEGORY_OFFSET;
 const FOUR_OF_A_KIND: u16 = 8 * HAND_CATEGORY_OFFSET;
 const STRAIGHT_FLUSH: u16 = 9 * HAND_CATEGORY_OFFSET;
 
@@ -140,8 +140,8 @@ impl EvalTableGenerator {
         }
 
         hand_value = STRAIGHT;
-        // A-5
-        self.populate(0x1000000001111u64, 5, &mut hand_value, rc, rc, rc, 3, false);
+        // A,6,7,8,9
+        self.populate(0x1000011110000u64, 5, &mut hand_value, rc, rc, rc, 3, false);
         for r in 4..rc {
             // every other straight
             self.populate(
@@ -155,9 +155,6 @@ impl EvalTableGenerator {
                 false,
             );
         }
-
-        hand_value = FLUSH;
-        self.populate(0, 0, &mut hand_value, rc, 0, 0, 0, true);
 
         // println!("ADDING FULL HOUSES");
         hand_value = FULL_HOUSE;
@@ -178,6 +175,9 @@ impl EvalTableGenerator {
                 }
             }
         }
+
+        hand_value = FLUSH;
+        self.populate(0, 0, &mut hand_value, rc, 0, 0, 0, true);
 
         // println!("ADDING FOUR OF A KINDS");
         hand_value = FOUR_OF_A_KIND;

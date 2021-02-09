@@ -24,8 +24,8 @@ impl MadeHandCategories {
     pub fn get_table_index(&self) -> usize {
         match self {
             MadeHandCategories::QuadsOrBetter => 0,
-            MadeHandCategories::FullHouse => 1,
-            MadeHandCategories::Flush => 2,
+            MadeHandCategories::Flush => 1,
+            MadeHandCategories::FullHouse => 2,
             MadeHandCategories::Straight => 3,
             MadeHandCategories::ThreeOfAKind => 4,
             MadeHandCategories::TwoPair => 5,
@@ -116,8 +116,8 @@ pub fn get_made_hand_category(hole_cards: &Combo, board: u64) -> MadeHandCategor
     match score >> HAND_CATEGORY_SHIFT {
         9 => MadeHandCategories::QuadsOrBetter,
         8 => MadeHandCategories::QuadsOrBetter,
-        7 => MadeHandCategories::FullHouse,
-        6 => MadeHandCategories::Flush,
+        7 => MadeHandCategories::Flush,
+        6 => MadeHandCategories::FullHouse,
         5 => MadeHandCategories::Straight,
         4 => MadeHandCategories::ThreeOfAKind,
         3 => MadeHandCategories::TwoPair,

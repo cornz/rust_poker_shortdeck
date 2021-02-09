@@ -259,7 +259,7 @@ impl HandRange {
      */
     fn add_combo(&mut self, c1: u8, c2: u8, weight: u8) {
         // error: if out of bounds
-        if c1 > 51 || c2 > 51 {
+        if c1 < 17 || c2 < 17 {
             return;
         }
         // error: if same two cards
