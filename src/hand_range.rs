@@ -112,6 +112,12 @@ impl HandRange {
             .collect()
     }
 
+    pub fn from_strings_unwrapped(arr: Vec<&String>) -> Vec<Self> {
+        arr.iter()
+            .map(|s| HandRange::from_string(s.to_owned().to_string()))
+            .collect()
+    }
+
     /// remove combos that conflict with board
     pub fn remove_conflicting_combos(&mut self, board_mask: u64) {
         self.hands
